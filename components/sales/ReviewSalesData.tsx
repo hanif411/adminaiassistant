@@ -141,11 +141,11 @@ export function ReviewSalesData({
           <TableHeader>
             <TableRow className="bg-gray-50 hover:bg-gray-50">
               <TableHead className="w-[50px]">No</TableHead>
-              <TableHead>Nama Produk</TableHead>
-              <TableHead className="w-[100px] text-right">Jumlah</TableHead>
-              <TableHead className="w-[80px]">Satuan</TableHead>
-              <TableHead className="text-right">Harga</TableHead>
-              <TableHead className="text-right">Total</TableHead>
+              <TableHead className="min-w-50">Produk</TableHead>
+              <TableHead className="w-[100px] min-w-20 text-right">Jumlah</TableHead>
+              <TableHead className="w-[80px] min-w-24">Satuan</TableHead>
+              <TableHead className="text-right min-w-30">Harga</TableHead>
+              <TableHead className="text-right min-w-30">Total</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -211,7 +211,7 @@ export function ReviewSalesData({
                     type="text"
                     readOnly
                     value={formatCurrency(item.quantity * item.price)}
-                    className="text-right text-sm bg-gray-100 font-bold"
+                    className="text-right text-sm  font-bold"
                   />
                 </TableCell>
 
@@ -234,14 +234,14 @@ export function ReviewSalesData({
           onClick={handleAddItem}
           variant="outline"
           className="border-dashed border-blue-500 text-blue-500 hover:bg-blue-50">
-          + Tambah Baris Item Baru
+          + Tambah Item
         </Button>
       </div>
 
       {/* Total Section (SALES LOGIC) */}
-      <div className="flex justify-between">
+      <div className="md:flex justify-between">
         {data.invoice_url ? (
-          <div className="relative">
+          <div className="max-w-sm">
             <img
               src={data.invoice_url}
               alt="Preview Chat Penjualan"
@@ -306,8 +306,8 @@ export function ReviewSalesData({
         <Button
           onClick={handleSave}
           disabled={status === "saving" || data.items.length === 0}
-          className="flex-1 bg-green-600 text-white hover:bg-green-700">
-          {status === "saving" ? "Menyimpan..." : "SIMPAN TRANSAKSI PENJUALAN"}
+          className="flex-1">
+          {status === "saving" ? "Menyimpan..." : "Simpan"}
         </Button>
       </div>
     </div>

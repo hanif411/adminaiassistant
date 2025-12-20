@@ -1,5 +1,5 @@
 "use client";
-import { LogOut, User } from "lucide-react";
+import { LogOut, Menu, User } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import {
@@ -10,6 +10,15 @@ import {
 } from "../ui/dropdown-menu";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "../ui/sheet";
 
 function HeaderDashboard() {
   const supabase = createClient();
@@ -26,12 +35,12 @@ function HeaderDashboard() {
             <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
               <span className="text-white text-xl">📦</span>
             </div>
-            <div className="hidden md:inline-block">
+            <div className="">
               <h1 className="text-xl  text-gray-900">Admin AI Assistant</h1>
               <p className="text-xs text-gray-500">Efisiensi Data Entry</p>
             </div>
           </Link>
-          <div>
+          <div className="hidden md:block">
             <Button variant={"link"}>
               <Link href={"/purchases"}>Pembelian</Link>
             </Button>
@@ -62,6 +71,41 @@ function HeaderDashboard() {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+          </div>
+
+          {/* Mobile navbar */}
+          <div className="md:hidden">
+            <Sheet>
+              <SheetTrigger>
+                <Menu />
+              </SheetTrigger>
+              <SheetContent>
+                <SheetHeader className="items-center pt-10">
+                  <div className="w-20 h-20 bg-primary rounded-lg flex items-center justify-center">
+                    <span className="text-white text-4xl">📦</span>
+                  </div>
+                  <SheetTitle className="text-xl">
+                    Admin AI Assistant
+                  </SheetTitle>
+                </SheetHeader>
+                <div className="flex flex-col items-start gap-4">
+                  <Button variant={"outline"} className="w-full text-xl ">
+                    <Link href={"/purchases"} className="w-full ">
+                      Pembelian
+                    </Link>
+                  </Button>
+                  <Button variant={"outline"} className="w-full text-xl">
+                    <Link href={"/sales"}>Penjualan</Link>
+                  </Button>
+                  <Button variant={"outline"} className="w-full text-xl">
+                    <Link href={"/stockopname"}>Stock Opname</Link>
+                  </Button>
+                </div>
+                <SheetFooter>
+                  <Button variant={"destructive"}>Log Out</Button>
+                </SheetFooter>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </div>

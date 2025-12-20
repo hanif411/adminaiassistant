@@ -181,9 +181,11 @@ export function ReviewStockData({ data, setData, onSave, isSaving }: any) {
           <TableHeader className="bg-gray-50/50">
             <TableRow>
               <TableHead className="w-12 text-center">No</TableHead>
-              <TableHead>Nama Produk</TableHead>
-              <TableHead className="w-32 text-center">Qty (Fisik)</TableHead>
-              <TableHead className="w-40">Harga Satuan</TableHead>
+              <TableHead className="min-w-50">Produk</TableHead>
+              <TableHead className="w-32 min-w-20 text-center">
+                Jumlah
+              </TableHead>
+              <TableHead className="w-40 min-w-35">Harga</TableHead>
               <TableHead className="w-16"></TableHead>
             </TableRow>
           </TableHeader>
@@ -260,7 +262,7 @@ export function ReviewStockData({ data, setData, onSave, isSaving }: any) {
           className="flex-1">
           {status === "saving"
             ? "Menyimpan..."
-            : "SIMPAN TRANSAKSI KE DATABASE"}
+            : "Simpan"}
         </Button>
       </div>
     </div>

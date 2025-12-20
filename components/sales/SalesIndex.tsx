@@ -77,15 +77,15 @@ export default function SalesIndex() {
 
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <h1 className="text-3xl text-gray-900">Penjualan</h1>
+      <div className="flex justify-between items-start md:items-center gap-4">
+        <h1 className="xl:text-3xl text-xl text-gray-900">Penjualan</h1>
         <Button>
           <Link href={"/sales/new"}>+ Penjualan</Link>
         </Button>
       </div>
-      <section className="">
+      <section className="border-1 p-3 mt-2 rounded-lg">
         <div className="bg-white  sm:p-2 ">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-1">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-2">
             <div className="md:col-span-5">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -99,7 +99,7 @@ export default function SalesIndex() {
               </div>
             </div>
 
-            <div className="md:col-span-3">
+            <div className="md:col-span-3 ">
               <select
                 value={customerFilter}
                 onChange={(e) => setCustomerFilter(e.target.value)}
@@ -114,23 +114,19 @@ export default function SalesIndex() {
             </div>
 
             <div className="md:col-span-4 flex items-center gap-2">
-              <div className="relative flex-1">
-                <input
-                  type="date"
-                  value={startDate}
-                  onChange={(e) => setStartDate(e.target.value)}
-                  className="w-full px-3 py-2.5 border rounded-lg border-gray-300 text-sm outline-none focus:ring-2 focus:ring-primary"
-                />
-              </div>
+              <input
+                type="date"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+                className="w-full px-3 py-2.5 border rounded-lg border-gray-300 text-sm outline-none focus:ring-2 focus:ring-primary"
+              />
               <span className="text-gray-400">s/d</span>
-              <div className="relative flex-1">
-                <input
-                  type="date"
-                  value={endDate}
-                  onChange={(e) => setEndDate(e.target.value)}
-                  className="w-full px-3 py-2.5 border rounded-lg border-gray-300 text-sm outline-none focus:ring-2 focus:ring-primary"
-                />
-              </div>
+              <input
+                type="date"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+                className="w-full px-3 py-2.5 border rounded-lg border-gray-300 text-sm outline-none focus:ring-2 focus:ring-primary"
+              />
             </div>
           </div>
 
@@ -155,26 +151,26 @@ export default function SalesIndex() {
       <section>
         <div className="bg-white border-gray-100 overflow-hidden">
           {/* Desktop Table */}
-          <div className="hidden lg:block overflow-x-auto">
+          <div className="hidden lg:block border-1 rounded-lg mt-2">
             <table className="w-full">
-              <thead className="bg-gray-50 border-b border-gray-200">
+              <thead className="bg-primary text-white border-b border-gray-200">
                 <tr>
-                  <th className="px-6 py-1 text-left text-xs text-gray-600 uppercase tracking-wider">
+                  <th className="px-6 py-1 text-left text-xs uppercase tracking-wider">
                     No
                   </th>
-                  <th className="px-6 py-1 text-left text-xs text-gray-600 uppercase tracking-wider">
+                  <th className="px-6 py-1 text-left text-xs uppercase tracking-wider">
                     Tanggal
                   </th>
-                  <th className="px-6 py-1 text-left text-xs text-gray-600 uppercase tracking-wider">
+                  <th className="px-6 py-1 text-left text-xs uppercase tracking-wider">
                     Customer
                   </th>
-                  <th className="px-6 py-1 text-left text-xs text-gray-600 uppercase tracking-wider">
+                  <th className="px-6 py-1 text-left text-xs uppercase tracking-wider">
                     Catatan
                   </th>
-                  <th className="px-6 py-1 text-left text-xs text-gray-600 uppercase tracking-wider">
+                  <th className="px-6 py-1 text-left text-xs uppercase tracking-wider">
                     Jumlah Item
                   </th>
-                  <th className="px-6 py-1 text-left text-xs text-gray-600 uppercase tracking-wider">
+                  <th className="px-6 py-1 text-left text-xs uppercase tracking-wider">
                     Total
                   </th>
                 </tr>
@@ -222,46 +218,27 @@ export default function SalesIndex() {
           </div>
 
           {/* Mobile Cards */}
-          <div className="lg:hidden divide-y divide-gray-200">
+          <div className="lg:hidden divide-y divide-gray-200 mt-2 ">
             {filteredSales.map((sale, index) => (
               <div
                 key={sale.id}
-                className="p-4 hover:bg-gray-50 transition-colors">
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <span className="text-xs text-gray-500">#{index + 1}</span>
-                    <p className="text-gray-900 mt-1">{sale.customer_name}</p>
-                    <p className="text-sm text-gray-600 mt-1">
-                      {sale.notes || "-"}
-                    </p>
-                  </div>
+                className="p-4 hover:bg-gray-50 transition-colors border-2 rounded-lg">
+                <div className="flex justify-between flex-row">
+                  <p className="text-gray-900">{sale.order_date}</p>
+                  <p className="text-gray-900 font-bold">{sale.total}</p>
                 </div>
-
-                <div className="grid grid-cols-2 gap-3 mb-3 text-sm">
-                  <div>
-                    <span className="text-gray-500">Tanggal Order</span>
-                    <p className="text-gray-900">{sale.order_date}</p>
-                  </div>
-                  <div>
-                    <span className="text-gray-500">Item</span>
-                    <p className="text-gray-900">{sale.item_count} item</p>
-                  </div>
-                  <div>
-                    <span className="text-gray-500">Total</span>
-                    <p className="text-gray-900">{sale.total}</p>
-                  </div>
-                  {/* <div>
-                    <span className="text-gray-500">Akurasi</span>
-                    <p className="text-gray-900">{sale.accuracy}</p>
-                  </div> */}
+                <p className="text-primary mt-1 font-bold">
+                  {sale.customer_name}
+                </p>
+                <div className="flex justify-between items-center flex-row">
+                  <p className="text-gray-900">{sale.item_count} item</p>
+                  <Link href={`/sales/${sale.id}`}>
+                    <Button>
+                      <Search />
+                      Detail
+                    </Button>
+                  </Link>
                 </div>
-
-                <Link href={`/sales/${sale.id}`}>
-                  <button className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-teal-600 hover:bg-teal-700 text-white rounded-lg transition-colors">
-                    <Eye className="w-4 h-4" />
-                    <span>View/Edit</span>
-                  </button>
-                </Link>
               </div>
             ))}
           </div>

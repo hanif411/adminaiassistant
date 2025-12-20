@@ -55,9 +55,9 @@ export default function StockIndex() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto p-6">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
-        <h1 className="text-3xl text-gray-900">Stock Opname</h1>
+    <div className="max-w-7xl mx-auto p-4">
+      <div className="flex flex-row justify-between items-center mb-2">
+        <h1 className="xl:text-3xl text-xl text-gray-900">Stock Opname</h1>
         <Button>
           <Link href={"/stockopname/new"}>+ Stock Opname</Link>
         </Button>
@@ -80,14 +80,14 @@ export default function StockIndex() {
             type="date"
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
-            className="flex-1 px-3 py-2 border rounded-lg text-sm outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-2 py-2 border rounded-lg text-sm outline-none focus:ring-2 focus:ring-blue-500"
           />
           <span className="text-gray-400">s/d</span>
           <input
             type="date"
             value={endDate}
             onChange={(e) => setEndDate(e.target.value)}
-            className="flex-1 px-3 py-2 border rounded-lg text-sm outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-2 py-2 border rounded-lg text-sm outline-none focus:ring-2 focus:ring-blue-500"
           />
           {(search || startDate || endDate) && (
             <Button
@@ -108,26 +108,18 @@ export default function StockIndex() {
         {/* Desktop Table */}
         <div className="hidden lg:block overflow-x-auto">
           <table className="w-full text-left border-collapse">
-            <thead className="bg-gray-50 border-b border-gray-200">
+            <thead className="bg-primary text-primary-foreground border-b border-gray-200">
               <tr>
-                <th className="px-6 py-2 text-xs font-bold text-gray-600 uppercase">
-                  No
-                </th>
-                <th className="px-6 py-2 text-xs font-bold text-gray-600 uppercase">
-                  Tanggal
-                </th>
-                <th className="px-6 py-2 text-xs font-bold text-gray-600 uppercase">
+                <th className="px-6 py-2 text-xs  uppercase">No</th>
+                <th className="px-6 py-2 text-xs  uppercase">Tanggal</th>
+                <th className="px-6 py-2 text-xs  uppercase">
                   No. Stock Opname
                 </th>
-                <th className="px-6 py-2 text-xs font-bold text-gray-600 uppercase">
-                  Rak
-                </th>
-                <th className="px-6 py-2 text-xs font-bold text-gray-600 uppercase text-center">
+                <th className="px-6 py-2 text-xs  uppercase">Rak</th>
+                <th className="px-6 py-2 text-xs  uppercase text-center">
                   Jumlah Item
                 </th>
-                <th className="px-6 py-2 text-xs font-bold text-gray-600 uppercase">
-                  Akurasi AI
-                </th>
+                <th className="px-6 py-2 text-xs  uppercase">Akurasi AI</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
@@ -169,32 +161,25 @@ export default function StockIndex() {
           </table>
         </div>
 
-        {/* Mobile View (Card-style for small screens) */}
+        {/* Mobile View */}
         <div className="lg:hidden divide-y divide-gray-100">
           {filtered.map((stock, index) => (
-            <div key={stock.id} className="p-4 hover:bg-gray-50">
-              <div className="flex justify-between items-start mb-2">
-                <div>
-                  <span className="text-xs text-gray-400 font-mono">
-                    {stock.no_stockopname || "-"}
-                  </span>
-                  <h3 className="font-bold text-gray-900 flex items-center mt-1">
-                    <MapPin className="w-4 h-4 mr-1 text-blue-500" />
-                    Rak: {stock.rack_number || "N/A"}
-                  </h3>
-                </div>
+            <div key={stock.id} className="p-4">
+              <div className="flex justify-between">
+                <p className=" ">{formatDate(stock.stockopname_date)}</p>
+                <p className="">{stock.no_stockopname || "-"}</p>
               </div>
-              <div className="grid grid-cols-2 gap-y-2 mt-4 text-sm">
-                <div className="text-gray-500">Tanggal:</div>
-                <div className="text-gray-900 font-medium">
-                  {new Date(stock.stockopname_date).toLocaleDateString("id-ID")}
-                </div>
-                <div className="text-gray-500">Jumlah:</div>
-                <div className="text-gray-900 font-medium">
-                  {stock.items_count} Produk
-                </div>
-                <div className="text-gray-500">Akurasi:</div>
-                <div className="">{stock.accuracy}</div>
+              <h3 className="font-bold text-primary flex items-center mt-1">
+                Rak: {stock.rack_number || "N/A"}
+              </h3>
+              <div className="flex justify-between items-center">
+                <p className="text-gray-900 ">{stock.items_count} Produk</p>
+                <Link href={`stockopname/${stock.id}`}>
+                  <Button>
+                    <Search />
+                    Detail
+                  </Button>
+                </Link>
               </div>
             </div>
           ))}

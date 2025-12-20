@@ -137,12 +137,14 @@ export function ReviewData({
           <TableHeader>
             <TableRow className="bg-gray-50 hover:bg-gray-50">
               <TableHead className="w-[50px]">No</TableHead>
-              <TableHead className="w-[100px]">Kode Item</TableHead>
-              <TableHead>Nama Produk</TableHead>
-              <TableHead className="w-[80px] text-right">Jumlah</TableHead>
-              <TableHead className="w-[80px]">Satuan</TableHead>
-              <TableHead className="text-right">Harga</TableHead>
-              <TableHead className="text-right">Subtotal</TableHead>
+              <TableHead className="w-[100px] min-w-30">Kode Item</TableHead>
+              <TableHead className="min-w-50">Nama Produk</TableHead>
+              <TableHead className="w-[80px] min-w-20 text-right">
+                Jumlah
+              </TableHead>
+              <TableHead className="w-[80px] min-w-24">Satuan</TableHead>
+              <TableHead className="text-right min-w-25">Harga</TableHead>
+              <TableHead className="text-right min-w-28">Subtotal</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -259,11 +261,11 @@ export function ReviewData({
       </div>
 
       {/* Total Section (FIXED LOGIC) */}
-      <div className="flex justify-between gap-2 mb-10">
+      <div className="md:flex justify-between gap-2 mb-10">
         {/* Image preview */}
-        <div className="w-xl">
+        <div className="">
           {data.invoice_url ? (
-            <div className="relative">
+            <div className="max-w-xs md:max-w-xl">
               <img
                 src={data.invoice_url}
                 alt="Preview Faktur Pembelian"
@@ -334,9 +336,7 @@ export function ReviewData({
           onClick={handleSave}
           disabled={status === "saving" || data.items.length === 0}
           className="flex-1">
-          {status === "saving"
-            ? "Menyimpan..."
-            : "SIMPAN TRANSAKSI KE DATABASE"}
+          {status === "saving" ? "Menyimpan..." : "Simpan"}
         </Button>
       </div>
     </div>

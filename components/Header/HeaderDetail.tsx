@@ -40,21 +40,21 @@ function HeaderDetail({
               variant={"outline"}
               title="Export Data ke Excel">
               <FileSpreadsheet className="w-4 h-4" />
-              <span className="hidden sm:inline">Export Excel</span>
+              <span className=" sm:inline">Export Excel</span>
             </Button>
             <Button
               onClick={onSave}
               className=""
               title="Simpan Perubahan ke Database">
               <Save className="w-4 h-4" />
-              <span className="hidden sm:inline">Simpan Perubahan</span>
+              <span className=" sm:inline">Simpan</span>
             </Button>
             <Button
               onClick={onDelete}
               variant={"destructive"}
               title="Hapus Transaksi Ini">
               <Trash2 className="w-4 h-4" />
-              <span className="hidden sm:inline">Hapus</span>
+              <span className=" sm:inline">Hapus</span>
             </Button>
           </div>
         </div>

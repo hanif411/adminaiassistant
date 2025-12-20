@@ -53,11 +53,11 @@ export default function SalesDetailView({
         <Table>
           <TableHeader className="bg-gray-50">
             <TableRow>
-              <TableHead>Produk</TableHead>
-              <TableHead className="w-24">Qty</TableHead>
-              <TableHead className="w-24">Unit</TableHead>
-              <TableHead>Harga Satuan</TableHead>
-              <TableHead>SubTotal</TableHead>
+              <TableHead className="min-w-50">Produk</TableHead>
+              <TableHead className="min-w-20">Jumlah</TableHead>
+              <TableHead className="min-w-24">Satuan</TableHead>
+              <TableHead className="min-w-30">Harga</TableHead>
+              <TableHead className="min-w-30">SubTotal</TableHead>
               <TableHead></TableHead>
             </TableRow>
           </TableHeader>
@@ -135,7 +135,7 @@ export default function SalesDetailView({
         </div>
       </div>
 
-      <div className="flex justify-between">
+      <div className="md:flex justify-between">
         {data.invoice_url ? (
           <div className="relative">
             <img

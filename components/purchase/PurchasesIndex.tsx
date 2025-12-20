@@ -80,17 +80,17 @@ export default function PurchasesIndex() {
   }
 
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <h1 className="text-3xl text-gray-900">Pembelian</h1>
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1 md:py-2 mt-2">
+      <div className="flex md:flex-row items-center justify-between md:items-center gap-4">
+        <h1 className="xl:text-3xl text-xl text-gray-900">Pembelian</h1>
         <Button>
           <Link href={"/purchases/new"}>+ Pembelian</Link>
         </Button>
       </div>
       <section className="mb-2">
-        <div className="bg-white rounded-xl p-1 sm:p-2 ">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-            <div className="md:col-span-4">
+        <div className="bg-white rounded-lg p-3 sm:p-2 border-1 mt-2">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-2">
+            <div className="md:col-span-4 col-span-1 w-full">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
@@ -104,13 +104,12 @@ export default function PurchasesIndex() {
             </div>
 
             {/* Supplier Filter */}
-            <div className="md:col-span-3">
+            <div className="md:col-span-3 ">
               <select
                 value={supplierFilter}
                 onChange={(e) => setSupplierFilter(e.target.value)}
-                className=" px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none appearance-none bg-white">
+                className=" ps-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none w-full appearance-none bg-white">
                 <option value="all">Semua Supplier</option>
-                {/* Menggunakan uniqueSuppliers dari data live */}
                 {uniqueSuppliers.map((supplier) => (
                   <option key={supplier} value={supplier}>
                     {supplier}
@@ -119,24 +118,20 @@ export default function PurchasesIndex() {
               </select>
             </div>
 
-            <div className="md:col-span-5 flex items-center gap-2">
-              <div className="relative flex-1">
-                <input
-                  type="date"
-                  value={startDate}
-                  onChange={(e) => setStartDate(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-lg border-gray-300 text-sm outline-none focus:ring-2 focus:ring-primary"
-                />
-              </div>
-              <span className="text-gray-400">s/d</span>
-              <div className="relative flex-1">
-                <input
-                  type="date"
-                  value={endDate}
-                  onChange={(e) => setEndDate(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-lg border-gray-300 text-sm outline-none focus:ring-2 focus:ring-primary"
-                />
-              </div>
+            <div className="md:col-span-5 flex items-center gap-2 ">
+              <input
+                type="date"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+                className="w-full px-3 py-2 border rounded-lg border-gray-300 text-sm outline-none focus:ring-2 focus:ring-primary"
+              />
+              <span className="text-gray-400 ">s/d</span>
+              <input
+                type="date"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+                className="w-full px-3 py-2 border rounded-lg border-gray-300 text-sm outline-none focus:ring-2 focus:ring-primary"
+              />
             </div>
           </div>
 
@@ -161,26 +156,26 @@ export default function PurchasesIndex() {
       <section>
         <div className="bg-white overflow-hidden">
           {/* Desktop Table */}
-          <div className="hidden lg:block overflow-x-auto">
+          <div className="hidden lg:block overflow-x-auto border-1 rounded-lg">
             <table className="w-full">
-              <thead className="bg-gray-50 border-b border-gray-200">
+              <thead className="bg-primary text-primary-foreground border-b border-gray-200">
                 <tr>
-                  <th className="px-6 py-2 text-left text-xs text-gray-600 uppercase tracking-wider">
+                  <th className="px-6 py-2 text-left text-xs uppercase tracking-wider">
                     No
                   </th>
-                  <th className="px-6 py-1 text-left text-xs text-gray-600 uppercase tracking-wider">
+                  <th className="px-6 py-1 text-left text-xs uppercase tracking-wider">
                     Tanggal
                   </th>
-                  <th className="px-6 py-1 text-left text-xs text-gray-600 uppercase tracking-wider">
+                  <th className="px-6 py-1 text-left text-xs uppercase tracking-wider">
                     Supplier
                   </th>
-                  <th className="px-6 py-1 text-left text-xs text-gray-600 uppercase tracking-wider">
+                  <th className="px-6 py-1 text-left text-xs uppercase tracking-wider">
                     Nomor Faktur
                   </th>
-                  <th className="px-6 py-1 text-left text-xs text-gray-600 uppercase tracking-wider">
+                  <th className="px-6 py-1 text-left text-xs uppercase tracking-wider">
                     Jumlah Item
                   </th>
-                  <th className="px-6 py-1 text-left text-xs text-gray-600 uppercase tracking-wider">
+                  <th className="px-6 py-1 text-left text-xs uppercase tracking-wider">
                     Total
                   </th>
                 </tr>
@@ -234,44 +229,27 @@ export default function PurchasesIndex() {
             {filteredPurchases.map((purchase, index) => (
               <div
                 key={purchase.id}
-                className="p-4 hover:bg-gray-50 transition-colors">
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <span className="text-xs text-gray-500">#{index + 1}</span>
-                    <p className="text-gray-900 mt-1">
-                      {purchase.invoice_number}
+                className="p-4 hover:bg-gray-50 transition-colors rounded-lg border-2">
+                <div className="items-start justify-between">
+                  <div className="flex justify-between">
+                    <p className="text-gray-900">
+                      {formatDate(purchase.purchase_date)}
                     </p>
-                    <p className="text-sm text-gray-600 mt-1">
-                      {purchase.extracted_supplier_name}
-                    </p>
+                    <p className="text-end font-bold">{purchase.total}</p>
+                  </div>
+                  <p className="text-sm text-primary font-bold mt-1">
+                    {purchase.extracted_supplier_name}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <p className="text-gray-900 ">{purchase.invoice_number}</p>
+                    <Link href={`/purchases/${purchase.id}`}>
+                      <Button>
+                        <Search />
+                        Detail
+                      </Button>
+                    </Link>
                   </div>
                 </div>
-
-                <div className="grid grid-cols-2 gap-3 mb-3 text-sm">
-                  <div>
-                    <span className="text-gray-500">Tanggal</span>
-                    <p className="text-gray-900">{purchase.purchase_date}</p>
-                  </div>
-                  <div>
-                    <span className="text-gray-500">Item</span>
-                    <p className="text-gray-900">{purchase.item_count} item</p>
-                  </div>
-                  <div>
-                    <span className="text-gray-500">Total</span>
-                    <p className="text-gray-900">{purchase.total}</p>
-                  </div>
-                  {/* <div>
-                    <span className="text-gray-500">Akurasi</span>
-                    <p className="text-gray-900">{purchase.accuracy}</p>
-                  </div> */}
-                </div>
-
-                <Link href={`/purchases/${purchase.id}`}>
-                  <button className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-teal-600 hover:bg-teal-700 text-white rounded-lg transition-colors">
-                    <Eye className="w-4 h-4" />
-                    <span>View/Edit</span>
-                  </button>
-                </Link>
               </div>
             ))}
           </div>

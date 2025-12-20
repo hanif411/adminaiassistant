@@ -102,13 +102,17 @@ export default function PurchaseDetailView({
           <TableHeader>
             <TableRow className="bg-gray-50 hover:bg-gray-50">
               <TableHead className="w-[50px]">No</TableHead>
-              <TableHead className="w-[150px]">Kode Item</TableHead>
-              <TableHead>Nama Produk</TableHead>
-              <TableHead className="w-[100px] text-right">Jumlah</TableHead>
-              <TableHead className="w-[100px]">Satuan</TableHead>
-              <TableHead className="text-right">Harga</TableHead>
-              <TableHead className="text-right">Subtotal</TableHead>
-              <TableHead className="w-[50px]"></TableHead>
+              <TableHead className="min-w-30 w-[100px]">
+                Kode Item
+              </TableHead>
+              <TableHead className="min-w-50">Nama Produk</TableHead>
+              <TableHead className="min-w-20 w-[70px] text-right">Jumlah</TableHead>
+              <TableHead className="min-w-24 w-[100px]">Satuan</TableHead>
+              <TableHead className="min-w-30 [100px] text-right">Harga</TableHead>
+              <TableHead className="min-w-30 text-right">
+                Subtotal
+              </TableHead>
+              <TableHead className="min-w-[50px]"></TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>

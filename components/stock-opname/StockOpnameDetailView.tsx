@@ -64,20 +64,15 @@ export default function StockOpnameDetailView({
             <h3 className="font-bold text-gray-700 flex items-center gap-2">
               <Package className="w-4 h-4" /> Rincian Produk ({items.length})
             </h3>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={onAddItem}
-              className="h-8 gap-1 border-dashed">
-              <Plus className="w-3 h-3" /> Tambah Baris
-            </Button>
           </div>
           <Table>
             <TableHeader className="bg-gray-50/50">
               <TableRow>
-                <TableHead>Nama Produk</TableHead>
-                <TableHead className="w-32 text-center">Qty Fisik</TableHead>
-                <TableHead className="w-40">Harga Est.</TableHead>
+                <TableHead className="min-w-50">Nama Produk</TableHead>
+                <TableHead className="min-w-20 w-32 text-center">
+                  Jumlah
+                </TableHead>
+                <TableHead className="min-w-30 w-40">Harga</TableHead>
                 <TableHead className="w-12"></TableHead>
               </TableRow>
             </TableHeader>
@@ -86,7 +81,6 @@ export default function StockOpnameDetailView({
                 <TableRow key={idx}>
                   <TableCell>
                     <Input
-                      className="border-transparent focus:border-gray-200 shadow-none"
                       value={item.extracted_product_name}
                       onChange={(e) =>
                         onCellUpdate(
@@ -100,7 +94,7 @@ export default function StockOpnameDetailView({
                   <TableCell>
                     <Input
                       type="number"
-                      className="text-center font-bold"
+                      className="text-center"
                       value={item.extracted_quantity}
                       onChange={(e) =>
                         onCellUpdate(
@@ -142,6 +136,15 @@ export default function StockOpnameDetailView({
               ))}
             </TableBody>
           </Table>
+          <div className="p-4 border-t">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onAddItem}
+              className="gap-2">
+              <Plus className="w-4 h-4" /> Tambah Item
+            </Button>
+          </div>
         </div>
 
         {/* Gambar Preview */}
