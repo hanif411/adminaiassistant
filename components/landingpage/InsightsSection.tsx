@@ -90,7 +90,7 @@ function getColorClass(title: any) {
 function ChartMockup() {
   return (
     <div className="relative">
-      <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 ">
         <img
           src="https://images.unsplash.com/photo-1504607798333-52a30db54a5d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGZpbmFuY2lhbCUyMGNoYXJ0fGVufDF8fHx8MTc2NTQxNjk1Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
           alt="Analytics Charts"

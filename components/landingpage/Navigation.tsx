@@ -11,7 +11,7 @@ export default function Navigation() {
             </div>
             <div>
               <h1 className="text-xl text-gray-900">Admin Assistant</h1>
-              <p className="text-xs text-gray-500">Purchase Management</p>
+              <p className="text-xs hidden md:block text-gray-500">Purchase Management</p>
             </div>
           </div>
 
@@ -23,7 +23,7 @@ export default function Navigation() {
             </Link>
             <Link
               href="/register"
-              className="bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-600 hover:to-blue-700 text-white px-6 py-2 rounded-lg transition-all shadow-lg hover:shadow-xl">
+              className="bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-600 hover:to-blue-700 text-white md:px-6 px-1 py-2 rounded-lg transition-all shadow-lg hover:shadow-xl">
               Mulai Gratis
             </Link>
           </div>
