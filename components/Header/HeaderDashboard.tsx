@@ -102,7 +102,9 @@ function HeaderDashboard() {
                   </Button>
                 </div>
                 <SheetFooter>
-                  <Button variant={"destructive"}>Log Out</Button>
+                  <Button variant={"destructive"} onClick={handleLogout}>
+                    Log Out
+                  </Button>
                 </SheetFooter>
               </SheetContent>
             </Sheet>
