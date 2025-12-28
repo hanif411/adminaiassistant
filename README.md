@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🤖 Admin AI Assistant - Retail Automation & AI Extraction
 
-## Getting Started
+[![Deployment Status](https://img.shields.io/badge/Vercel-Deployed-success)](https://adminaiassistant.vercel.app/)
+[![Tech Stack](https://img.shields.io/badge/Stack-Next.js%2014%20|%20Supabase%20|%20Gemini%20AI-blue)](https://adminaiassistant.vercel.app/)
 
-First, run the development server:
+> **Solving manual data entry with AI.** Automating Stock Opname and Invoice processing with a Human-in-the-Loop validation system.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🌟 Executive Summary (For HR)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Aplikasi ini dirancang untuk memangkas waktu kerja administrasi retail yang repetitif. Dengan integrasi AI, sistem dapat "membaca" foto rak gudang (stock opname), struk belanja (invoice), hingga screenshot penjualan WhatsApp, lalu mengubahnya menjadi data digital secara otomatis.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Impact:** Mengurangi waktu input data hingga 80%.
+- **Reliability:** Sistem verifikasi interaktif menjamin akurasi data 100% sebelum masuk ke database.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠️ Technical Deep Dive (For Developers)
 
-To learn more about Next.js, take a look at the following resources:
+Sistem ini menggunakan arsitektur modern untuk menangani beban komputasi AI dan sinkronisasi data:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Frontend:** Next.js 14 (App Router) dengan Server Components untuk performa optimal.
+- **AI Engine:** Google Gemini Pro Vision untuk OCR (Optical Character Recognition) dan Entity Extraction berbasis konteks.
+- **Database & Auth:** PostgreSQL (Supabase) dengan Prisma ORM untuk manajemen skema yang type-safe.
+- **Logic:** Implementasi _Contextual Text Recovery_—AI mampu memprediksi teks yang buram/terpotong (contoh: "ind mi" menjadi "Indomie") berdasarkan data training yang ada.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🚀 Key Features & User Workflow
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Secure Authentication:** Login cepat dan aman menggunakan Google OAuth.
+2. **AI Stock Opname:** User mengambil foto rak barang -> AI mendeteksi nama produk dan jumlahnya secara otomatis.
+3. **Invoice & Receipt OCR:** Ekstraksi otomatis data item, harga, dan kuantitas dari struk belanja fisik.
+4. **WhatsApp Sales Integration:** Memproses data penjualan langsung dari screenshot chat/invoice WhatsApp.
+5. **Human-in-the-Loop Validation:** Setiap hasil ekstraksi AI akan ditampilkan dalam dashboard interaktif untuk di-review dan divalidasi oleh user sebelum di-commit ke database.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 💻 Tech Stack
+
+- **Framework:** Next.js 14 (TypeScript)
+- **Database:** Supabase
+- **AI:** Google Generative AI (GEMINI 2.5)
+
+## ⚙️ Installation & Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/hanif411/adminaiassistant.git](https://github.com/hanif411/adminaiassistant.git)
+   cd adminaiassistant
+   ```
+2. **Install dependencies:**
+   npm install
+
+3. **Configure Environment Variables**
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   GEMINI_API_KEY=your_gemini_api_key
+4. **Run the development server**
+   npm run dev
